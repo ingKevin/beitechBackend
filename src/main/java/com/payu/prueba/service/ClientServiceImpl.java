@@ -24,4 +24,9 @@ public class ClientServiceImpl implements ClientService{
 		return this.clientRepository.findAll();
 	}
 	
+	@Override
+	public void deleteClient(int id) {
+		this.clientRepository.deleteById(id);
+	}
+	
 }

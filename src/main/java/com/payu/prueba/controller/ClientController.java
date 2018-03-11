@@ -22,8 +22,8 @@ public class ClientController {
 	
 	protected ObjectMapper mapper;
 	
-	@RequestMapping(value= "/saveOrUpdate", method = RequestMethod.POST)
-	public RestResponse saveOrUpdate(@RequestBody String clientJson) 
+	@RequestMapping(value= "/saveOrUpdateClient", method = RequestMethod.POST)
+	public RestResponse saveOrUpdateClient(@RequestBody String clientJson) 
 			throws JsonParseException, JsonMappingException, IOException{
 		
 		this.mapper = new ObjectMapper();
@@ -36,5 +36,12 @@ public class ClientController {
 	@RequestMapping(value= "/getClients", method = RequestMethod.GET)
 	public List<Client> getClients(){
 		return this.clientService.findAll();
+	}
+	
+	@RequestMapping(value= "/deleteClient", method = RequestMethod.POST)
+	public void deleteClient(@RequestBody String clientJson)throws JsonParseException, JsonMappingException, IOException{		
+		this.mapper = new ObjectMapper();
+		Client client = this.mapper.readValue(clientJson, Client.class);
+		this.clientService.deleteClient(client.getClient_id());
 	}
 }
