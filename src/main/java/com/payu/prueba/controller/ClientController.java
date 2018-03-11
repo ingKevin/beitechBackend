@@ -1,6 +1,7 @@
 package com.payu.prueba.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,5 +31,10 @@ public class ClientController {
 		
 		this.clientService.save(client);
 		return new RestResponse(HttpStatus.OK.value(), "Successfull");
+	}
+	
+	@RequestMapping(value= "/getClients", method = RequestMethod.GET)
+	public List<Client> getClients(){
+		return this.clientService.findAll();
 	}
 }

@@ -3,7 +3,6 @@ package com.payu.prueba.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "client")
 public class Client {
 	private int client_id;
 	private String name;
