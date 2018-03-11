@@ -43,6 +43,6 @@ public class ProductController {
 	public void deleteProduct(@RequestBody String productJson)throws JsonParseException, JsonMappingException, IOException{		
 		this.mapper = new ObjectMapper();
 		Product product = this.mapper.readValue(productJson, Product.class);
-		this.productService.deleteProduct(product.getProduct_id());
+		this.productService.deleteProduct(product.getProductId());
 	}
 }

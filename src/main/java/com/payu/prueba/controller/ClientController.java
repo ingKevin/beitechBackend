@@ -42,6 +42,6 @@ public class ClientController {
 	public void deleteClient(@RequestBody String clientJson)throws JsonParseException, JsonMappingException, IOException{		
 		this.mapper = new ObjectMapper();
 		Client client = this.mapper.readValue(clientJson, Client.class);
-		this.clientService.deleteClient(client.getClient_id());
+		this.clientService.deleteClient(client.getClientId());
 	}
 }
