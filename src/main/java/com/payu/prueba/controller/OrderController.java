@@ -29,6 +29,8 @@ public class OrderController {
 		this.mapper = new ObjectMapper();
 		Orders order = this.mapper.readValue(orderJson, Orders.class);
 		
+		System.out.println(" - " + order);
+		
 		this.orderService.save(order);
 		return new RestResponse(HttpStatus.OK.value(), "Successfull");
 	}

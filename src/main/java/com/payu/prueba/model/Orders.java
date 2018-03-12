@@ -1,6 +1,8 @@
 package com.payu.prueba.model;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -12,6 +14,28 @@ public class Orders {
 	private String address;
 	private int price;
 	private Client client;
+	private List<Product> products;
+	
+	public Orders(){
+		
+	}
+	
+	public Orders(int orderId,	Date date, String address, int price, Client client){
+		this.orderId = orderId;
+		this.date = date;
+		this.address=  address;
+		this.price = price;
+		this.client =  client;
+	}
+	
+	public Orders(int orderId,	Date date, String address, int price, Client client, List<Product> products){
+		this.orderId = orderId;
+		this.date = date;
+		this.address=  address;
+		this.price = price;
+		this.client =  client;
+		this.products = products;
+	}
 	
 	@Id
 	@Column(name = "order_id")
@@ -57,5 +81,17 @@ public class Orders {
 	
 	public void setClient(Client client) {
 		this.client = client;
+	}
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "order_detail", 
+	joinColumns = @JoinColumn(name = "order_id",referencedColumnName = "order_id"), 
+	inverseJoinColumns = @JoinColumn(name = "product_id",referencedColumnName = "product_id"))
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 }
