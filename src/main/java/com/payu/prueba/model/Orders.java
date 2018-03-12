@@ -2,7 +2,6 @@ package com.payu.prueba.model;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 
@@ -83,7 +82,7 @@ public class Orders {
 		this.client = client;
 	}
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "order_detail", 
 	joinColumns = @JoinColumn(name = "order_id",referencedColumnName = "order_id"), 
 	inverseJoinColumns = @JoinColumn(name = "product_id",referencedColumnName = "product_id"))
