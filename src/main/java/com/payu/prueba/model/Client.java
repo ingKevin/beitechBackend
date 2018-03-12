@@ -1,5 +1,7 @@
 package com.payu.prueba.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -35,10 +37,6 @@ public class Client {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	
-
-	
 	
 	
 }

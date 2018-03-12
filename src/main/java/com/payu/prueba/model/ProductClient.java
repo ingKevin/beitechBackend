@@ -3,7 +3,7 @@ package com.payu.prueba.model;
 import javax.persistence.*;
 
 @Entity
-public class Product_client {
+public class ProductClient {
 	
 	private int id;
 	private Product product;
