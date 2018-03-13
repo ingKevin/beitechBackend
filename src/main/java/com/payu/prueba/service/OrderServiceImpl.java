@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.payu.prueba.model.Client;
 import com.payu.prueba.model.Orders;
 import com.payu.prueba.repository.OrderRepository;
 
@@ -27,6 +28,11 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public void deleteOrder(int id) {
 		this.orderRepository.deleteById(id);
+	}
+
+	@Override
+	public List<Orders> findByClient(Client client) {
+		return this.orderRepository.findByClient(client);
 	}
 	
 }

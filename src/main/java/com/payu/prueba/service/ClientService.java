@@ -10,7 +10,6 @@ public interface ClientService{
 	
 	List<Client> findAll();
 	
-	void deleteClient(int id);
-	
+	void deleteClient(int id);	
 
 }

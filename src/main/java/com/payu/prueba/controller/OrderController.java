@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.payu.prueba.model.Client;
 import com.payu.prueba.model.Orders;
 import com.payu.prueba.service.OrderService;
 import com.payu.prueba.util.RestResponse;
@@ -45,6 +46,13 @@ public class OrderController {
 		this.mapper = new ObjectMapper();
 		Orders order = this.mapper.readValue(orderJson, Orders.class);
 		this.orderService.deleteOrder(order.getOrderId());
+	}
+	
+	@RequestMapping(value= "/getOrdersByClient", method = RequestMethod.POST)
+	public List<Orders> getOrdersByClient(@RequestBody String clientJson)throws JsonParseException, JsonMappingException, IOException{	
+		this.mapper = new ObjectMapper();
+		Client client = this.mapper.readValue(clientJson, Client.class);
+		return this.orderService.findByClient(client);	
 	}
 }
 

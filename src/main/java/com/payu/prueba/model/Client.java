@@ -9,8 +9,28 @@ public class Client {
 	private int clientId;
 	private String name;
 	private String email;
+	private List<Product> products;
+	private List<Orders> orders;
 	
+	public Client(){
+		
+	}	
 	
+	public Client(int clientId, String name, String email) {
+		super();
+		this.clientId = clientId;
+		this.name = name;
+		this.email = email;
+	}	
+
+	public Client(int clientId, String name, String email, List<Product> products) {
+		super();
+		this.clientId = clientId;
+		this.name = name;
+		this.email = email;
+		this.products = products;
+	}
+
 	@Id
 	@Column(name = "client_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +57,19 @@ public class Client {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(name = "product_client", 
+	joinColumns = @JoinColumn(name = "client_id",referencedColumnName = "client_id"), 
+	inverseJoinColumns = @JoinColumn(name = "product_id",referencedColumnName = "product_id"))
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	
 	
 	
 }

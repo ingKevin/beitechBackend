@@ -2,6 +2,7 @@ package com.payu.prueba.service;
 
 import java.util.List;
 
+import com.payu.prueba.model.Client;
 import com.payu.prueba.model.Orders;
 
 public interface OrderService{
@@ -10,6 +11,8 @@ public interface OrderService{
 	
 	List<Orders> findAll();
 	
-	void deleteOrder(int id);	
+	void deleteOrder(int id);
+	
+	List<Orders> findByClient(Client client);
 	
 }
