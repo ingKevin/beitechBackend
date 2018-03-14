@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-03-2018 a las 01:43:09
+-- Tiempo de generación: 14-03-2018 a las 22:24:52
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -37,12 +37,11 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`client_id`, `name`, `email`) VALUES
-(1, 'Kevin', 'a@a.co'),
-(2, 'Steven', 'ing@q.co'),
-(3, 'Camilo', 'ka@ka,co'),
-(4, 'Camilo', 'ka@ka,co'),
-(5, 'David ', 'Perez'),
-(6, 'Yesica', 'Gomez');
+(33, 'Kevin', 'ingkevinarias@gmail.com'),
+(34, 'Steven', 'stevengantiva@gmail.com'),
+(35, 'Camilo', 'camiloperez@gmail.com'),
+(36, 'Camila', 'camilarodriguez@gmail.com'),
+(37, 'Luisa', 'luisafernandez@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -57,17 +56,6 @@ CREATE TABLE `orders` (
   `price` int(10) NOT NULL,
   `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `orders`
---
-
-INSERT INTO `orders` (`order_id`, `date`, `address`, `price`, `client_id`) VALUES
-(1, '2018-03-13', 'Cra x for y', 5000, 1),
-(2, '2018-03-12', 'Cra x for y', 10000, 1),
-(3, '2018-03-12', 'Cra j for y', 10000, 1),
-(4, '2018-03-12', 'Cra j for y', 10000, 2),
-(5, '2018-03-12', 'Cra m for y', 10000, 3);
 
 -- --------------------------------------------------------
 
@@ -98,8 +86,21 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `name`, `price`) VALUES
-(1, 'Papa', 2000),
-(2, 'Jugo', 1000);
+(1, 'Papa', 20000),
+(2, 'Jugo', 15000),
+(3, 'Gaseosa', 2000),
+(4, 'Mani', 15000),
+(5, 'Aceitunas', 5000),
+(6, 'Leche', 2500),
+(7, 'Arroz', 5000),
+(8, 'Pan tajado', 3500),
+(9, 'Pasta', 2000),
+(10, 'Aceite', 6500),
+(11, 'Salsa de tomate', 2300),
+(12, 'Mayonesa', 2300),
+(13, 'Té', 2000),
+(14, 'Azucar', 3000),
+(15, 'Sal', 3500);
 
 -- --------------------------------------------------------
 
@@ -112,6 +113,14 @@ CREATE TABLE `product_client` (
   `product_id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `product_client`
+--
+
+INSERT INTO `product_client` (`id`, `product_id`, `client_id`) VALUES
+(133, 1, 33),
+(134, 12, 33);
 
 --
 -- Índices para tablas volcadas
@@ -160,27 +169,27 @@ ALTER TABLE `product_client`
 -- AUTO_INCREMENT de la tabla `client`
 --
 ALTER TABLE `client`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT de la tabla `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT de la tabla `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `product_client`
 --
 ALTER TABLE `product_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 --
 -- Restricciones para tablas volcadas
 --
@@ -203,7 +212,7 @@ ALTER TABLE `order_detail`
 --
 ALTER TABLE `product_client`
   ADD CONSTRAINT `product_client_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `product_client_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `product_client_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
