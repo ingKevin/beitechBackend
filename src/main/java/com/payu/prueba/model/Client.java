@@ -10,7 +10,6 @@ public class Client {
 	private String name;
 	private String email;
 	private List<Product> products;
-	private List<Orders> orders;
 	
 	public Client(){
 		
